@@ -1,9 +1,18 @@
-Adblock Plus for Chrome, Opera and Safari - Blocking Disabled!  AJW 5/2016
+Adblock Minus for Chrome - Blocking Disabled!  AJW 5/2016
 =========================================
 
-This repository contains the platform-specific Adblock Plus source code for
-Chrome, Opera and Safari. It can be used to build Adblock Plus for these
-platforms, generic Adblock Plus code will be extracted from other repositories
+Preface
+---------
+This README.md (and indeed this entire project) is a lightly modified 
+version of that found in the Adblock Plus for Chrome repo here:
+
+https://hg.adblockplus.org/adblockpluschrome
+=========================================
+
+This repository contains the Adblock Minus source code for
+Chrome, as well as some residual Adblock Plus files for Opera and Safari. 
+It can be used to build Adblock Minus for Chrome.  Generic Adblock Plus/Minus 
+code will be extracted from other repositories
 automatically (see _dependencies_ file).
 
 Building
@@ -19,21 +28,14 @@ Building
 
 ### Building the extension
 
-Run one of the following commands in the project directory, depending on your
-target platform:
+Run the following command in the project directory:
 
     ./build.py -t chrome build -k adblockpluschrome-noblock.pem
-    ./build.py -t safari build -k adblockplussafari-noblock.pem
 
 This will create a build with a name in the form
-_adblockpluschrome-1.2.3.nnnn.crx_ or _adblockplussafari-1.2.3.nnnn.safariextz_.
+_adblockpluschrome-noblock-1.2.3.nnnn.crx_.
 Note that you don't need an existing signing key for Chrome, a new key
-will be created automatically if the file doesn't exist. Safari on the other
-hand always requires a valid developer certificate, you need to get one in the
-Apple Developer Center first. _adblockplussafari.pem_ should contain the private
-key for your developer certificate, the developer certificate itself as well as
-all the certificates it was signed with (Apple's root certificate and
-intermediate certificates) in PEM format - in that order.
+will be created automatically if the file doesn't exist.
 
 ### Development environment
 
@@ -41,18 +43,11 @@ To simplify the process of testing your changes you can create an unpacked
 development environment. For that run one of the following commands:
 
     ./build.py -t chrome devenv
-    ./build.py -t safari devenv
 
 This will create a _devenv.platform_ directory in the repository. In Chrome you
 should load _devenv.chrome_ as an unpacked extension directory. After making
 changes to the source code re-run the command to update the development
 environment, the extension should reload automatically after a few seconds.
-
-In Safari you should load _devenv.safari/adblockplussafari.safariextension_ as
-unpacked extension directory. After making changes to the source code re-run the
-command to update the development environment. You will still need to reload the
-extension explicitly in the Extension Builder, Safari currently doesn't allow
-automating this action.
 
 Running the unit tests
 ----------------------
@@ -64,3 +59,5 @@ extension's Options page, open the JavaScript Console and type in:
     location.href = "qunit/index.html";
 
 The unit tests will run automatically once the page loads.
+NOTE: Several of the unit tests are failing.  This is true even 
+for the unmodified code for Adblock Plus.
