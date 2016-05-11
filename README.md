@@ -7,6 +7,7 @@ This README.md (and indeed this entire project) is a lightly modified
 version of that found in the Adblock Plus for Chrome repo here:
 
 https://hg.adblockplus.org/adblockpluschrome
+
 =========================================
 
 This repository contains the Adblock Minus source code for
